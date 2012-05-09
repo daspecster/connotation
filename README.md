@@ -14,3 +14,12 @@ Or, if you prefer Haskell,
 ```haskell
 probability ps = product ps / (product ps + product [1 - px | px <- ps])
 ```
+
+# Database
+
+In the database the following are used as abbreviations for different connotations:
+
+* **+**: positive
+* **-**: negative
+* **0**: neutral
+* **u**: useless
