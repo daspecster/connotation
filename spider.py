@@ -1,9 +1,11 @@
 from BeautifulSoup import BeautifulSoup
 import urllib
 import bayes
+import sys
 
-bor = bayes.BayesOnRedis(redis_host='localhost', redis_port=6379, redis_db=0)
-url = "http://www.amazon.com/Kindle-Fire-Amazon-Tablet/product-reviews/B0051VVOB2/ref=cm_cr_pr_hist_1?ie=UTF8&showViewpoints=0&filterBy=addTwoStar&pageNumber="
+bor = bayes.BayesOnRedis(redis_host='localhost', redis_port=6381, redis_db=0)
+category = sys.argv[1] # e.g. "sad"
+url = sys.argv[2] # e.g. "http://www.amazon.com/Kindle-Fire-Amazon-Tablet/product-reviews/B0051VVOB2/ref=cm_cr_pr_hist_1?ie=UTF8&showViewpoints=0&filterBy=addTwoStar&pageNumber="
 f = open("words", 'a')
 
 for i in range(1,117):
@@ -22,7 +24,7 @@ for i in range(1,117):
 			try:
 				text = b.findAll("div")[19].fetchNextSiblings()[x-1].getText()
 				print "Feedback Length: " + str(len(text))
-				bor.train("sad", text)
+				bor.train(category, text)
 				f.write(text)
 				f.write("\n\n")
 			except Exception, e:
