@@ -17,6 +17,9 @@ print bor.classify("love")
 print bor.classify("bad bad dissapointed hate aweful sucks suck sucks sucks worst bad dissapointed sucks aweful terrible dissapointing crap dissapointed Very Dissapointed with Kindle Fire and Customer Service, you wont get the same tech twice! dissapointment total fail")
 print bor.classify("You have some very real problems with your site. It's terrible and probably not secure.")
 print bor.classify("this thing has some very serious problems which should be able to be fixed and some limitations")
+print bor.classify("I love this!")
+print bor.classify("This sucks!")
+print bor.classify("I can't believe how terrible this site is!")
 
 
 
