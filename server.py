@@ -17,11 +17,14 @@ class APIServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         url_variables = urlparse.parse_qs(path[2:])
         bor = bayes.BayesOnRedis(redis_host='localhost', redis_port=6379, redis_db=0)
 
-        text = urllib.unquote(url_variables['text'][0])
-        connotation = bor.classify(text)
+        text = urllib.unquote(url_variables.get('text', [""])[0])
         s.send_response(200)
         s.end_headers()
-        s.wfile.write(connotation)
+        if len(text) > 3:
+            connotation =bor.classify(text)
+            s.wfile.write(connotation)
+        else:
+            s.wfile.write("Um..you gotta put some text in the \"text\" variable")
 
 def start_server():
     server_class = BaseHTTPServer.HTTPServer
