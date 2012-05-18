@@ -59,7 +59,7 @@ probability word = if g + b > 5 then
           b = or (gethash word bad) 0
 ```
 
-We also need to be able to rate words in different classes. Graham's spam detection is only using only one class, `spam` (and the implicit class `not spam`). We need to extend his system four-fold:
+We also need to be able to rate words in different classes. Graham's spam detection is only using one class, `spam` (and the implicit class `not spam`). We need to extend his system four-fold:
 
 * `positive` (and `not positive`)
 * `negative` (and `not negative`)
