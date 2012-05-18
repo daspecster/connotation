@@ -20,6 +20,7 @@ print bor.classify("this thing has some very serious problems which should be ab
 print bor.classify("I love this!")
 print bor.classify("This sucks!")
 print bor.classify("I can't believe how terrible this site is!")
+print bor.classify("blarg")
 
 
 
