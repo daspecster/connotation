@@ -19,9 +19,12 @@ class APIServerHandler(BaseHTTPServer.BaseHTTPRequestHandler):
 
         text = urllib.unquote(url_variables.get('text', [""])[0])
         s.send_response(200)
+        s.send_header("Access-Control-Allow-Origin", "*")
+
         s.end_headers()
         if len(text) > 3:
-            connotation =bor.classify(text)
+            print text
+            connotation = bor.classify(text)
             s.wfile.write(connotation)
         else:
             s.wfile.write("Um..you gotta put some text in the \"text\" variable")
